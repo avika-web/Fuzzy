@@ -67,23 +67,24 @@ def prediksi_biaya_listrik(luas_rumah, jumlah_alat, daya_digunakan, daya_terpasa
 
 st.title("💸 Cek Perkiraan Tagihan Listrik Anda, Sebelum Kaget di Akhir Bulan!🔌 ")
 st.markdown("""
-Penasaran berapa kira-kira biaya listrik di rumah kamu tiap bulan?
-Sekarang nggak perlu tebak-tebakan lagi!
+<div style='background-color:#f0f8ff; padding:20px; border-radius:10px'>
+    <h4 style='color:#1e90ff;'>🔍 Penasaran berapa kira-kira biaya listrik di rumah kamu tiap bulan?</h4>
+    <p style='color:#333333; font-size:16px;'>
+    Sekarang nggak perlu tebak-tebakan lagi!<br><br>
+    Web ini bantu kamu <b>menghitung estimasi tagihan listrik bulanan</b> dengan cepat, cukup dari 
+    <b>luas rumah</b>, <b>jumlah alat elektronik</b>, dan <b>pemakaian listrik (kWh)</b> yang kamu isi.<br><br>
+    Sistem kami pakai <b style='color:#ff4500;'>logika fuzzy Sugeno</b>, jadi hasilnya tetap realistis dan menyesuaikan dengan tarif PLN terbaru.<br><br>
+    Cocok banget buat:
+    <ul style='margin-top:0;'>
+        <li>Kamu yang lagi ngatur keuangan rumah tangga</li>
+        <li>Pemilik kost atau kontrakan</li>
+        <li>Siapa pun yang mau tahu konsumsi listrik rumahnya</li>
+    </ul>
+    Yuk coba sekarang, isi datanya dan lihat <b style='color:#2e8b57;'>berapa tagihan listrikmu seandainya dihitung hari ini!</b> ⚡
+    </p>
+</div>
+""", unsafe_allow_html=True)
 
-Web ini bantu kamu menghitung estimasi tagihan listrik bulanan dengan cepat, cukup dari luas rumah, jumlah alat elektronik, dan perkiraan pemakaian listrik (kWh) yang kamu isi.
-
-Sistem kami pakai metode logika fuzzy Sugeno, jadi hasilnya tetap realistis dan menyesuaikan dengan tarif PLN terbaru.
-
-Cocok banget buat:
-
--Kamu yang lagi ngatur keuangan rumah tangga
-
--Pemilik kost atau kontrakan
-
--Siapa pun yang mau tahu konsumsi listrik rumahnya
-
-Yuk coba sekarang, isi datanya dan lihat berapa tagihan listrikmu seandainya hari ini dihitung! 🔌⚡
-""")
 
 # Input Luas Rumah
 luas_rumah = st.number_input("🏠 Luas Rumah (m²)", min_value=0.0, max_value=250.0, value=100.0)
