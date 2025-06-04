@@ -69,12 +69,19 @@ st.title("💸 Cek Perkiraan Tagihan Listrik Anda, Sebelum Kaget di Akhir Bulan!
 st.markdown("""
 Penasaran berapa kira-kira biaya listrik di rumah kamu tiap bulan?
 Sekarang nggak perlu tebak-tebakan lagi!
+
 Web ini bantu kamu menghitung estimasi tagihan listrik bulanan dengan cepat, cukup dari luas rumah, jumlah alat elektronik, dan perkiraan pemakaian listrik (kWh) yang kamu isi.
+
 Sistem kami pakai metode logika fuzzy Sugeno, jadi hasilnya tetap realistis dan menyesuaikan dengan tarif PLN terbaru.
+
 Cocok banget buat:
+
 -Kamu yang lagi ngatur keuangan rumah tangga
+
 -Pemilik kost atau kontrakan
+
 -Siapa pun yang mau tahu konsumsi listrik rumahnya
+
 Yuk coba sekarang, isi datanya dan lihat berapa tagihan listrikmu seandainya hari ini dihitung! 🔌⚡
 """)
 
