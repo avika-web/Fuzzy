@@ -67,26 +67,26 @@ def prediksi_biaya_listrik(luas_rumah, jumlah_alat, daya_digunakan, daya_terpasa
 
 st.title("🔌 Prediksi Biaya Listrik dengan Fuzzy Sugeno")
 st.markdown("""
-Aplikasi ini menggunakan sistem logika fuzzy Sugeno orde-1 untuk memperkirakan biaya listrik bulanan berdasarkan beberapa parameter:
-
-- **Luas Rumah (m²)**: antara 0 hingga 250 m²
-- **Jumlah Alat Elektronik**: antara 0 hingga 25
-- **Daya Digunakan (kWh)**: total pemakaian bulanan
-- **Daya Terpasang (VA)**: memilih dari golongan tarif PLN
-
-Silakan isi parameter berikut untuk menghitung estimasi biaya listrik Anda.
+Aplikasi ini menggunakan sistem logika fuzzy Sugeno orde-1 untuk memperkirakan biaya listrik bulanan berdasarkan beberapa parameter berikut.
 """)
 
-# Input pengguna
+# Input Luas Rumah
 luas_rumah = st.number_input("🏠 Luas Rumah (m²)", min_value=0.0, max_value=250.0, value=100.0)
+st.caption("Masukkan luas rumah antara 0 hingga 250 meter persegi.")
+
+# Input Jumlah Alat
 jumlah_alat = st.number_input("📺 Jumlah Alat Elektronik", min_value=0, max_value=25, value=10)
-daya_digunakan = st.number_input("⚡ Daya Digunakan per Bulan (kWh)", min_value=0.0, value=300.0)
+st.caption("Masukkan total alat elektronik utama di rumah, antara 0 hingga 25 alat.")
 
-# Selectbox daya terpasang
+# Input Daya Digunakan
+daya_digunakan = st.number_input("⚡ Daya Digunakan per Bulan (kWh)", min_value=0.0, max_value=2000.0, value=300.0)
+st.caption("Masukkan estimasi penggunaan listrik per bulan dalam kWh (maksimum 2000 kWh).")
+
+# Selectbox Daya Terpasang
 daya_terpasang = st.selectbox("🔌 Daya Terpasang (VA)", options=[900, 1300, 2200, 3500, 5500, 6600], index=1)
+st.caption("Pilih daya terpasang sesuai golongan tarif PLN rumah Anda.")
 
-# Tombol prediksi
-if st.button("Hitung Biaya Listrik"):
+# Tombol Prediksi
+if st.button("🔍 Hitung Biaya Listrik"):
     hasil = prediksi_biaya_listrik(luas_rumah, jumlah_alat, daya_digunakan, daya_terpasang)
     st.success(f"💡 Estimasi biaya listrik bulanan: **Rp {hasil:,.2f}**")
-
