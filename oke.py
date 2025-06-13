@@ -3,9 +3,10 @@ import streamlit as st
 # ------------------------
 # FUNGSI FUZZY MEMBERSHIP
 # ------------------------
-def rumah_kecil(x): return max(min((50 - x) / 25, 1), 0)
-def rumah_sedang(x): return max(min((x - 30) / 35, (100 - x) / 35), 0)
-def rumah_besar(x): return max(min((x - 80) / 85, 1), 0)
+def rumah_kecil(x): return max(min((75 - x) / 50, 1), 0)  # aktif dari 0 sampai 75
+def rumah_sedang(x): return max(min((x - 50) / 50, (150 - x) / 50), 0)  # aktif dari 50 sampai 150
+def rumah_besar(x): return max(min((x - 125) / 75, 1), 0)  # aktif dari 125 sampai 250
+
 
 def daya_ringan(x): return max(min((500 - x) / 200, 1), 0)
 def daya_sedang(x): return max(min((x - 300) / 200, (1000 - x) / 200), 0)
