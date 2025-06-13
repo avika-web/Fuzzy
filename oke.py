@@ -31,14 +31,13 @@ def get_tarif(daya_terpasang_va):
         return 1444.70  # default
 
 # ------------------------
-# FUNGSI OUTPUT SUGENO ORDE-1
+# FUNGSI OUTPUT SUGENO ORDE-1 (perbaikan)
 # ------------------------
 def rule_output(luas, alat, daya_digunakan, tarif):
-    kwh_luas = luas * 1.5
-    kwh_alat = alat * 2
-    kwh_daya = daya_digunakan * 1.8
-    total_kwh = kwh_luas + kwh_alat + kwh_daya
-    return total_kwh * tarif
+    kwh_tambahan_luas = luas * 0.05      # misal 100 m² → 5 kWh
+    kwh_tambahan_alat = alat * 2         # misal 10 alat → 20 kWh
+    total_kwh = daya_digunakan + kwh_tambahan_luas + kwh_tambahan_alat
+    return total_kwh * tarif             # total dikali tarif
 
 # ------------------------
 # PREDIKSI BIAYA DENGAN FIS SUGENO
@@ -85,7 +84,6 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-
 # Input Luas Rumah
 luas_rumah = st.number_input("🏠 Luas Rumah (m²)", min_value=0.0, max_value=250.0, value=100.0)
 st.caption("Masukkan luas rumah antara 0 hingga 250 meter persegi.")
@@ -95,11 +93,11 @@ jumlah_alat = st.number_input("📺 Jumlah Alat Elektronik", min_value=0, max_va
 st.caption("Masukkan total alat elektronik utama di rumah, antara 0 hingga 25 alat.")
 
 # Input Daya Digunakan
-daya_digunakan = st.number_input("⚡ Daya Digunakan per Bulan (kWh)", min_value=0.0, max_value=2000.0, value=300.0)
+daya_digunakan = st.number_input("⚡ Daya Digunakan per Bulan (kWh)", min_value=0.0, max_value=2000.0, value=150.0)
 st.caption("Masukkan estimasi penggunaan listrik per bulan dalam kWh (maksimum 2000 kWh).")
 
 # Selectbox Daya Terpasang
-daya_terpasang = st.selectbox("🔌 Daya Terpasang (VA)", options=[900, 1300, 2200, 3500, 5500, 6600], index=1)
+daya_terpasang = st.selectbox("🔌 Daya Terpasang (VA)", options=[900, 1300, 2200, 3500, 5500, 6600], index=0)
 st.caption("Pilih daya terpasang sesuai golongan tarif PLN rumah Anda.")
 
 # Tombol Prediksi
