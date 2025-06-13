@@ -3,18 +3,18 @@ import streamlit as st
 # ------------------------
 # FUNGSI FUZZY MEMBERSHIP
 # ------------------------
-def rumah_kecil(x): return max(min((75 - x) / 50, 1), 0)  # aktif dari 0 sampai 75
-def rumah_sedang(x): return max(min((x - 50) / 50, (150 - x) / 50), 0)  # aktif dari 50 sampai 150
-def rumah_besar(x): return max(min((x - 125) / 75, 1), 0)  # aktif dari 125 sampai 250
 
+def rumah_kecil(x): return max(min((80 - x) / 50, 1), 0)
+def rumah_sedang(x): return max(min((x - 50) / 50, (200 - x) / 50), 0)
+def rumah_besar(x): return max(min((x - 150) / 100, 1), 0)
 
-def daya_ringan(x): return max(min((500 - x) / 200, 1), 0)
-def daya_sedang(x): return max(min((x - 300) / 200, (1000 - x) / 200), 0)
-def daya_berat(x): return max(min((x - 800) / 200, 1), 0)
+def daya_ringan(x): return max(min((5000 - x) / 3000, 1), 0)
+def daya_sedang(x): return max(min((x - 3000) / 4000, (12000 - x) / 4000), 0)
+def daya_berat(x): return max(min((x - 9000) / 6000, 1), 0)
 
-def alat_sedikit(x): return max(min((5 - x) / 4, 1), 0)
-def alat_sedang(x): return max(min((x - 3) / 4, (10 - x) / 5), 0)
-def alat_banyak(x): return max(min((x - 8) / 10, 1), 0)
+def alat_sedikit(x): return max(min((10 - x) / 5, 1), 0)
+def alat_sedang(x): return max(min((x - 5) / 5, (20 - x) / 5), 0)
+def alat_banyak(x): return max(min((x - 15) / 10, 1), 0)
 
 # ------------------------
 # TARIF PLN BERDASARKAN DAYA TERPASANG
@@ -91,7 +91,7 @@ st.caption("Masukkan total alat elektronik utama di rumah, antara 0 hingga 25 al
 
 # Input Daya Digunakan
 daya_digunakan = st.number_input("⚡ Daya Digunakan per Bulan (kWh)", min_value=0.0, max_value=2000.0, value=150.0)
-st.caption("Masukkan estimasi penggunaan listrik per bulan dalam kWh (maksimum 2000 kWh).")
+st.caption("Masukkan estimasi penggunaan listrik per bulan dalam kWh (maksimum 15000 kWh).")
 
 # Selectbox Daya Terpasang
 daya_terpasang = st.selectbox("🔌 Daya Terpasang (VA)", options=[900, 1300, 2200, 3500, 5500, 6600], index=0)
