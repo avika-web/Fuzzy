@@ -50,7 +50,7 @@ def prediksi_biaya_listrik(luas_rumah, jumlah_alat, daya_digunakan, daya_terpasa
                 w = μ_r * μ_a * μ_d
 
                 # Output linear Sugeno orde 1: gabungan berbobot dari masing-masing fitur
-                z = (μ_r * luas_rumah * 0.3 + μ_a * jumlah_alat * 5 + μ_d * daya_digunakan * 1.5) * tarif/100
+                z = (μ_r * luas_rumah * 0.3 + μ_a * jumlah_alat * 5 + μ_d * daya_digunakan * 1.5) * tarif
                 μ.append((w, z))
 
     numerator = sum(w * z for w, z in μ)
