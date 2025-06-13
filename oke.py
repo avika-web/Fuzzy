@@ -31,16 +31,7 @@ def get_tarif(daya_terpasang_va):
         return 1444.70  # default
 
 # ------------------------
-# FUNGSI OUTPUT SUGENO ORDE-1 (perbaikan)
-# ------------------------
-def rule_output(luas, alat, daya_digunakan, tarif):
-    kwh_tambahan_luas = luas * 0.05      # misal 100 m² → 5 kWh
-    kwh_tambahan_alat = alat * 2         # misal 10 alat → 20 kWh
-    total_kwh = daya_digunakan + kwh_tambahan_luas + kwh_tambahan_alat
-    return total_kwh * tarif             # total dikali tarif
-
-# ------------------------
-# PREDIKSI BIAYA DENGAN FIS SUGENO
+# PREDIKSI BIAYA DENGAN FIS SUGENO ORDE 1
 # ------------------------
 def prediksi_biaya_listrik(luas_rumah, jumlah_alat, daya_digunakan, daya_terpasang_va):
     tarif = get_tarif(daya_terpasang_va)
@@ -52,8 +43,13 @@ def prediksi_biaya_listrik(luas_rumah, jumlah_alat, daya_digunakan, daya_terpasa
     for r_func in rumah_f:
         for a_func in alat_f:
             for d_func in daya_f:
-                w = r_func(luas_rumah) * a_func(jumlah_alat) * d_func(daya_digunakan)
-                z = rule_output(luas_rumah, jumlah_alat, daya_digunakan, tarif)
+                μ_r = r_func(luas_rumah)
+                μ_a = a_func(jumlah_alat)
+                μ_d = d_func(daya_digunakan)
+                w = μ_r * μ_a * μ_d
+
+                # Output linear Sugeno orde 1: gabungan berbobot dari masing-masing fitur
+                z = (μ_r * luas_rumah * 0.05 + μ_a * jumlah_alat * 2 + μ_d * daya_digunakan) * tarif
                 μ.append((w, z))
 
     numerator = sum(w * z for w, z in μ)
