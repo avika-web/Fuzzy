@@ -90,7 +90,7 @@ jumlah_alat = st.number_input("📺 Jumlah Alat Elektronik", min_value=0, max_va
 st.caption("Masukkan total alat elektronik utama di rumah, antara 0 hingga 25 alat.")
 
 # Input Daya Digunakan
-daya_digunakan = st.number_input("⚡ Daya Digunakan per Bulan (kWh)", min_value=0.0, max_value=2000.0, value=150.0)
+daya_digunakan = st.number_input("⚡ Daya Digunakan per Bulan (kWh)", min_value=0.0, max_value=15000.0, value=150.0)
 st.caption("Masukkan estimasi penggunaan listrik per bulan dalam kWh (maksimum 15000 kWh).")
 
 # Selectbox Daya Terpasang
